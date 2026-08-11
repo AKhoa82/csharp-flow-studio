@@ -18,7 +18,7 @@ export const Route = createFileRoute("/admin/categories/$id")({
 
 function CategoryDetail() {
   const { id } = Route.useParams();
-  const category = categories.find((c) => c.id === id) ?? categories[0];
+  const category = categories.find((c) => c.id === id) ?? categories[0]!;
   const list = courses.filter((c) => c.categoryId === category.id);
 
   return (

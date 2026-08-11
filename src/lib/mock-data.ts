@@ -621,6 +621,6 @@ export const weakTopics = [
   { topic: "LINQ grouping", accuracy: 67 },
 ];
 
-export const getCourse = (id: string) => courses.find((c) => c.id === id) ?? courses[0];
-export const getCategory = (id: string) => categories.find((c) => c.id === id) ?? categories[0];
+export const getCourse = (id: string) => courses.find((c) => c.id === id) ?? courses[0]!;
+export const getCategory = (id: string) => categories.find((c) => c.id === id) ?? categories[0]!;
 export const chaptersOf = (courseId: string) => chapters.filter((c) => c.courseId === courseId);

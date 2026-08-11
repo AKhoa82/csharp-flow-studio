@@ -192,7 +192,7 @@ function CategoriesPage() {
                             <Pencil className="h-4 w-4" /> Edit
                           </DropdownMenuItem>
                           <DropdownMenuItem
-                            variant="destructive"
+                            className="text-destructive focus:text-destructive"
                             onSelect={() => setPendingDelete(c.name)}
                           >
                             <Trash2 className="h-4 w-4" /> Delete
