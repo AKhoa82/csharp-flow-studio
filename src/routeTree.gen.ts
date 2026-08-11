@@ -13,11 +13,30 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminChaptersRouteImport } from './routes/admin.chapters'
+import { Route as AdminNotificationsRouteImport } from './routes/admin.notifications'
+import { Route as AdminPracticeRouteImport } from './routes/admin.practice'
+import { Route as AdminResourcesRouteImport } from './routes/admin.resources'
+import { Route as AdminResultsRouteImport } from './routes/admin.results'
+import { Route as AdminSearchRouteImport } from './routes/admin.search'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as LearnSearchRouteImport } from './routes/learn.search'
+import { Route as AdminAiContentRouteImport } from './routes/admin.ai.content'
+import { Route as AdminAiQuestionsRouteImport } from './routes/admin.ai.questions'
 import { Route as AdminCategoriesIndexRouteImport } from './routes/admin.categories.index'
 import { Route as AdminCategoriesIdRouteImport } from './routes/admin.categories.$id'
 import { Route as AdminCoursesIndexRouteImport } from './routes/admin.courses.index'
 import { Route as AdminCoursesIdRouteImport } from './routes/admin.courses.$id'
 import { Route as AdminCoursesNewRouteImport } from './routes/admin.courses.new'
+import { Route as AdminLessonsIndexRouteImport } from './routes/admin.lessons.index'
+import { Route as AdminLessonsIdRouteImport } from './routes/admin.lessons.$id'
+import { Route as AdminQuestionsIndexRouteImport } from './routes/admin.questions.index'
+import { Route as AdminQuestionsEditorRouteImport } from './routes/admin.questions.editor'
+import { Route as AdminReviewIndexRouteImport } from './routes/admin.review.index'
+import { Route as AdminReviewQuestionsRouteImport } from './routes/admin.review.questions'
+import { Route as AdminTestsIndexRouteImport } from './routes/admin.tests.index'
+import { Route as AdminTestsBuilderRouteImport } from './routes/admin.tests.builder'
+import { Route as AdminTestsPreviewRouteImport } from './routes/admin.tests.preview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,6 +56,56 @@ const LearnRoute = LearnRouteImport.update({
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminChaptersRoute = AdminChaptersRouteImport.update({
+  id: '/chapters',
+  path: '/chapters',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPracticeRoute = AdminPracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminResourcesRoute = AdminResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminResultsRoute = AdminResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSearchRoute = AdminSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const LearnSearchRoute = LearnSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => LearnRoute,
+} as any)
+const AdminAiContentRoute = AdminAiContentRouteImport.update({
+  id: '/ai/content',
+  path: '/ai/content',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAiQuestionsRoute = AdminAiQuestionsRouteImport.update({
+  id: '/ai/questions',
+  path: '/ai/questions',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminCategoriesIndexRoute = AdminCategoriesIndexRouteImport.update({
@@ -64,39 +133,141 @@ const AdminCoursesNewRoute = AdminCoursesNewRouteImport.update({
   path: '/courses/new',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminLessonsIndexRoute = AdminLessonsIndexRouteImport.update({
+  id: '/lessons/',
+  path: '/lessons/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLessonsIdRoute = AdminLessonsIdRouteImport.update({
+  id: '/lessons/$id',
+  path: '/lessons/$id',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminQuestionsIndexRoute = AdminQuestionsIndexRouteImport.update({
+  id: '/questions/',
+  path: '/questions/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminQuestionsEditorRoute = AdminQuestionsEditorRouteImport.update({
+  id: '/questions/editor',
+  path: '/questions/editor',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReviewIndexRoute = AdminReviewIndexRouteImport.update({
+  id: '/review/',
+  path: '/review/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReviewQuestionsRoute = AdminReviewQuestionsRouteImport.update({
+  id: '/review/questions',
+  path: '/review/questions',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTestsIndexRoute = AdminTestsIndexRouteImport.update({
+  id: '/tests/',
+  path: '/tests/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTestsBuilderRoute = AdminTestsBuilderRouteImport.update({
+  id: '/tests/builder',
+  path: '/tests/builder',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTestsPreviewRoute = AdminTestsPreviewRouteImport.update({
+  id: '/tests/preview',
+  path: '/tests/preview',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
-  '/learn': typeof LearnRoute
+  '/learn': typeof LearnRouteWithChildren
+  '/admin/chapters': typeof AdminChaptersRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/practice': typeof AdminPracticeRoute
+  '/admin/resources': typeof AdminResourcesRoute
+  '/admin/results': typeof AdminResultsRoute
+  '/admin/search': typeof AdminSearchRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/learn/search': typeof LearnSearchRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/ai/content': typeof AdminAiContentRoute
+  '/admin/ai/questions': typeof AdminAiQuestionsRoute
   '/admin/categories/$id': typeof AdminCategoriesIdRoute
   '/admin/courses/$id': typeof AdminCoursesIdRoute
   '/admin/courses/new': typeof AdminCoursesNewRoute
+  '/admin/lessons/$id': typeof AdminLessonsIdRoute
+  '/admin/questions/editor': typeof AdminQuestionsEditorRoute
+  '/admin/review/questions': typeof AdminReviewQuestionsRoute
+  '/admin/tests/builder': typeof AdminTestsBuilderRoute
+  '/admin/tests/preview': typeof AdminTestsPreviewRoute
   '/admin/categories/': typeof AdminCategoriesIndexRoute
   '/admin/courses/': typeof AdminCoursesIndexRoute
+  '/admin/lessons/': typeof AdminLessonsIndexRoute
+  '/admin/questions/': typeof AdminQuestionsIndexRoute
+  '/admin/review/': typeof AdminReviewIndexRoute
+  '/admin/tests/': typeof AdminTestsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/learn': typeof LearnRoute
+  '/learn': typeof LearnRouteWithChildren
+  '/admin/chapters': typeof AdminChaptersRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/practice': typeof AdminPracticeRoute
+  '/admin/resources': typeof AdminResourcesRoute
+  '/admin/results': typeof AdminResultsRoute
+  '/admin/search': typeof AdminSearchRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/learn/search': typeof LearnSearchRoute
   '/admin': typeof AdminIndexRoute
+  '/admin/ai/content': typeof AdminAiContentRoute
+  '/admin/ai/questions': typeof AdminAiQuestionsRoute
   '/admin/categories/$id': typeof AdminCategoriesIdRoute
   '/admin/courses/$id': typeof AdminCoursesIdRoute
   '/admin/courses/new': typeof AdminCoursesNewRoute
+  '/admin/lessons/$id': typeof AdminLessonsIdRoute
+  '/admin/questions/editor': typeof AdminQuestionsEditorRoute
+  '/admin/review/questions': typeof AdminReviewQuestionsRoute
+  '/admin/tests/builder': typeof AdminTestsBuilderRoute
+  '/admin/tests/preview': typeof AdminTestsPreviewRoute
   '/admin/categories': typeof AdminCategoriesIndexRoute
   '/admin/courses': typeof AdminCoursesIndexRoute
+  '/admin/lessons': typeof AdminLessonsIndexRoute
+  '/admin/questions': typeof AdminQuestionsIndexRoute
+  '/admin/review': typeof AdminReviewIndexRoute
+  '/admin/tests': typeof AdminTestsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
-  '/learn': typeof LearnRoute
+  '/learn': typeof LearnRouteWithChildren
+  '/admin/chapters': typeof AdminChaptersRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/practice': typeof AdminPracticeRoute
+  '/admin/resources': typeof AdminResourcesRoute
+  '/admin/results': typeof AdminResultsRoute
+  '/admin/search': typeof AdminSearchRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/learn/search': typeof LearnSearchRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/ai/content': typeof AdminAiContentRoute
+  '/admin/ai/questions': typeof AdminAiQuestionsRoute
   '/admin/categories/$id': typeof AdminCategoriesIdRoute
   '/admin/courses/$id': typeof AdminCoursesIdRoute
   '/admin/courses/new': typeof AdminCoursesNewRoute
+  '/admin/lessons/$id': typeof AdminLessonsIdRoute
+  '/admin/questions/editor': typeof AdminQuestionsEditorRoute
+  '/admin/review/questions': typeof AdminReviewQuestionsRoute
+  '/admin/tests/builder': typeof AdminTestsBuilderRoute
+  '/admin/tests/preview': typeof AdminTestsPreviewRoute
   '/admin/categories/': typeof AdminCategoriesIndexRoute
   '/admin/courses/': typeof AdminCoursesIndexRoute
+  '/admin/lessons/': typeof AdminLessonsIndexRoute
+  '/admin/questions/': typeof AdminQuestionsIndexRoute
+  '/admin/review/': typeof AdminReviewIndexRoute
+  '/admin/tests/': typeof AdminTestsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -104,39 +275,96 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/learn'
+    | '/admin/chapters'
+    | '/admin/notifications'
+    | '/admin/practice'
+    | '/admin/resources'
+    | '/admin/results'
+    | '/admin/search'
+    | '/admin/settings'
+    | '/learn/search'
     | '/admin/'
+    | '/admin/ai/content'
+    | '/admin/ai/questions'
     | '/admin/categories/$id'
     | '/admin/courses/$id'
     | '/admin/courses/new'
+    | '/admin/lessons/$id'
+    | '/admin/questions/editor'
+    | '/admin/review/questions'
+    | '/admin/tests/builder'
+    | '/admin/tests/preview'
     | '/admin/categories/'
     | '/admin/courses/'
+    | '/admin/lessons/'
+    | '/admin/questions/'
+    | '/admin/review/'
+    | '/admin/tests/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/learn'
+    | '/admin/chapters'
+    | '/admin/notifications'
+    | '/admin/practice'
+    | '/admin/resources'
+    | '/admin/results'
+    | '/admin/search'
+    | '/admin/settings'
+    | '/learn/search'
     | '/admin'
+    | '/admin/ai/content'
+    | '/admin/ai/questions'
     | '/admin/categories/$id'
     | '/admin/courses/$id'
     | '/admin/courses/new'
+    | '/admin/lessons/$id'
+    | '/admin/questions/editor'
+    | '/admin/review/questions'
+    | '/admin/tests/builder'
+    | '/admin/tests/preview'
     | '/admin/categories'
     | '/admin/courses'
+    | '/admin/lessons'
+    | '/admin/questions'
+    | '/admin/review'
+    | '/admin/tests'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/learn'
+    | '/admin/chapters'
+    | '/admin/notifications'
+    | '/admin/practice'
+    | '/admin/resources'
+    | '/admin/results'
+    | '/admin/search'
+    | '/admin/settings'
+    | '/learn/search'
     | '/admin/'
+    | '/admin/ai/content'
+    | '/admin/ai/questions'
     | '/admin/categories/$id'
     | '/admin/courses/$id'
     | '/admin/courses/new'
+    | '/admin/lessons/$id'
+    | '/admin/questions/editor'
+    | '/admin/review/questions'
+    | '/admin/tests/builder'
+    | '/admin/tests/preview'
     | '/admin/categories/'
     | '/admin/courses/'
+    | '/admin/lessons/'
+    | '/admin/questions/'
+    | '/admin/review/'
+    | '/admin/tests/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRouteWithChildren
-  LearnRoute: typeof LearnRoute
+  LearnRoute: typeof LearnRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -167,6 +395,76 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/chapters': {
+      id: '/admin/chapters'
+      path: '/chapters'
+      fullPath: '/admin/chapters'
+      preLoaderRoute: typeof AdminChaptersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/practice': {
+      id: '/admin/practice'
+      path: '/practice'
+      fullPath: '/admin/practice'
+      preLoaderRoute: typeof AdminPracticeRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/resources': {
+      id: '/admin/resources'
+      path: '/resources'
+      fullPath: '/admin/resources'
+      preLoaderRoute: typeof AdminResourcesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/results': {
+      id: '/admin/results'
+      path: '/results'
+      fullPath: '/admin/results'
+      preLoaderRoute: typeof AdminResultsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/search': {
+      id: '/admin/search'
+      path: '/search'
+      fullPath: '/admin/search'
+      preLoaderRoute: typeof AdminSearchRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/learn/search': {
+      id: '/learn/search'
+      path: '/search'
+      fullPath: '/learn/search'
+      preLoaderRoute: typeof LearnSearchRouteImport
+      parentRoute: typeof LearnRoute
+    }
+    '/admin/ai/content': {
+      id: '/admin/ai/content'
+      path: '/ai/content'
+      fullPath: '/admin/ai/content'
+      preLoaderRoute: typeof AdminAiContentRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ai/questions': {
+      id: '/admin/ai/questions'
+      path: '/ai/questions'
+      fullPath: '/admin/ai/questions'
+      preLoaderRoute: typeof AdminAiQuestionsRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/categories/': {
@@ -204,33 +502,142 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCoursesNewRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/lessons/': {
+      id: '/admin/lessons/'
+      path: '/lessons'
+      fullPath: '/admin/lessons/'
+      preLoaderRoute: typeof AdminLessonsIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/lessons/$id': {
+      id: '/admin/lessons/$id'
+      path: '/lessons/$id'
+      fullPath: '/admin/lessons/$id'
+      preLoaderRoute: typeof AdminLessonsIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/questions/': {
+      id: '/admin/questions/'
+      path: '/questions'
+      fullPath: '/admin/questions/'
+      preLoaderRoute: typeof AdminQuestionsIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/questions/editor': {
+      id: '/admin/questions/editor'
+      path: '/questions/editor'
+      fullPath: '/admin/questions/editor'
+      preLoaderRoute: typeof AdminQuestionsEditorRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/review/': {
+      id: '/admin/review/'
+      path: '/review'
+      fullPath: '/admin/review/'
+      preLoaderRoute: typeof AdminReviewIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/review/questions': {
+      id: '/admin/review/questions'
+      path: '/review/questions'
+      fullPath: '/admin/review/questions'
+      preLoaderRoute: typeof AdminReviewQuestionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tests/': {
+      id: '/admin/tests/'
+      path: '/tests'
+      fullPath: '/admin/tests/'
+      preLoaderRoute: typeof AdminTestsIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tests/builder': {
+      id: '/admin/tests/builder'
+      path: '/tests/builder'
+      fullPath: '/admin/tests/builder'
+      preLoaderRoute: typeof AdminTestsBuilderRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tests/preview': {
+      id: '/admin/tests/preview'
+      path: '/tests/preview'
+      fullPath: '/admin/tests/preview'
+      preLoaderRoute: typeof AdminTestsPreviewRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
+  AdminChaptersRoute: typeof AdminChaptersRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminPracticeRoute: typeof AdminPracticeRoute
+  AdminResourcesRoute: typeof AdminResourcesRoute
+  AdminResultsRoute: typeof AdminResultsRoute
+  AdminSearchRoute: typeof AdminSearchRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminAiContentRoute: typeof AdminAiContentRoute
+  AdminAiQuestionsRoute: typeof AdminAiQuestionsRoute
   AdminCategoriesIdRoute: typeof AdminCategoriesIdRoute
   AdminCoursesIdRoute: typeof AdminCoursesIdRoute
   AdminCoursesNewRoute: typeof AdminCoursesNewRoute
+  AdminLessonsIdRoute: typeof AdminLessonsIdRoute
+  AdminQuestionsEditorRoute: typeof AdminQuestionsEditorRoute
+  AdminReviewQuestionsRoute: typeof AdminReviewQuestionsRoute
+  AdminTestsBuilderRoute: typeof AdminTestsBuilderRoute
+  AdminTestsPreviewRoute: typeof AdminTestsPreviewRoute
   AdminCategoriesIndexRoute: typeof AdminCategoriesIndexRoute
   AdminCoursesIndexRoute: typeof AdminCoursesIndexRoute
+  AdminLessonsIndexRoute: typeof AdminLessonsIndexRoute
+  AdminQuestionsIndexRoute: typeof AdminQuestionsIndexRoute
+  AdminReviewIndexRoute: typeof AdminReviewIndexRoute
+  AdminTestsIndexRoute: typeof AdminTestsIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminChaptersRoute: AdminChaptersRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminPracticeRoute: AdminPracticeRoute,
+  AdminResourcesRoute: AdminResourcesRoute,
+  AdminResultsRoute: AdminResultsRoute,
+  AdminSearchRoute: AdminSearchRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
   AdminIndexRoute: AdminIndexRoute,
+  AdminAiContentRoute: AdminAiContentRoute,
+  AdminAiQuestionsRoute: AdminAiQuestionsRoute,
   AdminCategoriesIdRoute: AdminCategoriesIdRoute,
   AdminCoursesIdRoute: AdminCoursesIdRoute,
   AdminCoursesNewRoute: AdminCoursesNewRoute,
+  AdminLessonsIdRoute: AdminLessonsIdRoute,
+  AdminQuestionsEditorRoute: AdminQuestionsEditorRoute,
+  AdminReviewQuestionsRoute: AdminReviewQuestionsRoute,
+  AdminTestsBuilderRoute: AdminTestsBuilderRoute,
+  AdminTestsPreviewRoute: AdminTestsPreviewRoute,
   AdminCategoriesIndexRoute: AdminCategoriesIndexRoute,
   AdminCoursesIndexRoute: AdminCoursesIndexRoute,
+  AdminLessonsIndexRoute: AdminLessonsIndexRoute,
+  AdminQuestionsIndexRoute: AdminQuestionsIndexRoute,
+  AdminReviewIndexRoute: AdminReviewIndexRoute,
+  AdminTestsIndexRoute: AdminTestsIndexRoute,
 }
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface LearnRouteChildren {
+  LearnSearchRoute: typeof LearnSearchRoute
+}
+
+const LearnRouteChildren: LearnRouteChildren = {
+  LearnSearchRoute: LearnSearchRoute,
+}
+
+const LearnRouteWithChildren = LearnRoute._addFileChildren(LearnRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
-  LearnRoute: LearnRoute,
+  LearnRoute: LearnRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
