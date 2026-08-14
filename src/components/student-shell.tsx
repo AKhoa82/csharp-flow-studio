@@ -17,11 +17,11 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const links = [
-  { label: "Dashboard", to: "/learn", icon: LayoutGrid },
-  { label: "Browse courses", to: "/learn/courses", icon: Compass },
-  { label: "Practice", to: "/learn/practice", icon: Target },
-  { label: "AI Tutor", to: "/learn/tutor", icon: Bot },
-  { label: "Search", to: "/learn/search", icon: Search },
+  { label: "Dashboard", to: "/learn", icon: LayoutGrid, tour: undefined },
+  { label: "Browse courses", to: "/learn/courses", icon: Compass, tour: "courses" },
+  { label: "Practice", to: "/learn/practice", icon: Target, tour: "practice" },
+  { label: "AI Tutor", to: "/learn/tutor", icon: Bot, tour: undefined },
+  { label: "Search", to: "/learn/search", icon: Search, tour: undefined },
 ];
 
 
