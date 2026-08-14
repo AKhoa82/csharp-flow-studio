@@ -1,5 +1,15 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Bell, Bot, Compass, GraduationCap, LayoutGrid, Menu, Search, Trophy } from "lucide-react";
+import {
+  Bell,
+  Bot,
+  Compass,
+  GraduationCap,
+  LayoutGrid,
+  Menu,
+  Search,
+  Target,
+  Trophy,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -9,9 +19,11 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 const links = [
   { label: "Dashboard", to: "/learn", icon: LayoutGrid },
   { label: "Browse courses", to: "/learn/courses", icon: Compass },
+  { label: "Practice", to: "/learn/practice", icon: Target },
   { label: "AI Tutor", to: "/learn/tutor", icon: Bot },
   { label: "Search", to: "/learn/search", icon: Search },
 ];
+
 
 export function StudentShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
