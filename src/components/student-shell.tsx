@@ -17,11 +17,11 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const links = [
-  { label: "Dashboard", to: "/learn", icon: LayoutGrid },
-  { label: "Browse courses", to: "/learn/courses", icon: Compass },
-  { label: "Practice", to: "/learn/practice", icon: Target },
-  { label: "AI Tutor", to: "/learn/tutor", icon: Bot },
-  { label: "Search", to: "/learn/search", icon: Search },
+  { label: "Dashboard", to: "/learn", icon: LayoutGrid, tour: undefined },
+  { label: "Browse courses", to: "/learn/courses", icon: Compass, tour: "courses" },
+  { label: "Practice", to: "/learn/practice", icon: Target, tour: "practice" },
+  { label: "AI Tutor", to: "/learn/tutor", icon: Bot, tour: undefined },
+  { label: "Search", to: "/learn/search", icon: Search, tour: undefined },
 ];
 
 
@@ -34,6 +34,7 @@ export function StudentShell({ children }: { children: ReactNode }) {
       <Link
         key={l.to}
         to={l.to}
+        data-tour={l.tour}
         className={cn(
           "flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-colors",
           active
