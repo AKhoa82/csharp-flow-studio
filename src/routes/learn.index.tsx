@@ -80,7 +80,7 @@ function StudentDashboard() {
         </span>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div data-tour="progress" className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <StatCard label="Day streak" value="12" delta="Best so far: 21 days" icon={Flame} tone="warning" />
         <StatCard label="Lessons completed" value="47" delta="+6 this week" icon={CheckCircle2} tone="success" />
         <StatCard label="Practice accuracy" value="82%" delta="+4 pts this month" icon={Target} tone="primary" />
