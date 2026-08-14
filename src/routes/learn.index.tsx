@@ -16,6 +16,7 @@ import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis } f
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { LevelBadge, SectionCard, StatCard } from "@/components/primitives";
+import { OnboardingTour, restartOnboardingTour } from "@/components/onboarding-tour";
 import { chaptersOf, courses, tests, weakTopics, type Course, type Lesson } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
