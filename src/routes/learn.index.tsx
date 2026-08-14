@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock,
+  Compass,
   Flame,
   Play,
   Sparkles,
