@@ -31,7 +31,7 @@ interface Msg {
   id: number;
   role: "user" | "ai";
   text: string;
-  code?: string;
+  code?: string | undefined;
 }
 
 const suggestions = [

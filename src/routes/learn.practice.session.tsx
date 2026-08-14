@@ -10,12 +10,12 @@ import { cn } from "@/lib/utils";
 type Mode = "quick" | "course" | "weak";
 
 export const Route = createFileRoute("/learn/practice/session")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    mode: (["quick", "course", "weak"] as const).includes(search.mode as Mode)
-      ? (search.mode as Mode)
-      : ("quick" as Mode),
-    course: typeof search.course === "string" ? search.course : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { mode: Mode; course?: string } => {
+    const raw = search["mode"];
+    const mode: Mode = raw === "course" || raw === "weak" ? raw : "quick";
+    const course = search["course"];
+    return typeof course === "string" ? { mode, course } : { mode };
+  },
   head: () => ({
     meta: [
       { title: "Practice session — CSharpHub" },
