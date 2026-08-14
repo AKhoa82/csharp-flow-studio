@@ -34,6 +34,7 @@ export function StudentShell({ children }: { children: ReactNode }) {
       <Link
         key={l.to}
         to={l.to}
+        data-tour={l.tour}
         className={cn(
           "flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-colors",
           active
