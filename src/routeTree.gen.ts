@@ -21,7 +21,9 @@ import { Route as AdminResultsRouteImport } from './routes/admin.results'
 import { Route as AdminSearchRouteImport } from './routes/admin.search'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
+import { Route as LearnPracticeRouteImport } from './routes/learn.practice'
 import { Route as LearnSearchRouteImport } from './routes/learn.search'
+import { Route as LearnTutorRouteImport } from './routes/learn.tutor'
 import { Route as AdminAiContentRouteImport } from './routes/admin.ai.content'
 import { Route as AdminAiQuestionsRouteImport } from './routes/admin.ai.questions'
 import { Route as AdminCategoriesIndexRouteImport } from './routes/admin.categories.index'
@@ -40,6 +42,8 @@ import { Route as AdminTestsBuilderRouteImport } from './routes/admin.tests.buil
 import { Route as AdminTestsPreviewRouteImport } from './routes/admin.tests.preview'
 import { Route as LearnCoursesIndexRouteImport } from './routes/learn.courses.index'
 import { Route as LearnCoursesIdRouteImport } from './routes/learn.courses.$id'
+import { Route as LearnPracticeSessionRouteImport } from './routes/learn.practice.session'
+import { Route as LearnTestsTestIdRouteImport } from './routes/learn.tests.$testId'
 import { Route as LearnCoursesIdLessonsLessonIdRouteImport } from './routes/learn.courses.$id.lessons.$lessonId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -102,9 +106,19 @@ const LearnIndexRoute = LearnIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LearnRoute,
 } as any)
+const LearnPracticeRoute = LearnPracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => LearnRoute,
+} as any)
 const LearnSearchRoute = LearnSearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => LearnRoute,
+} as any)
+const LearnTutorRoute = LearnTutorRouteImport.update({
+  id: '/tutor',
+  path: '/tutor',
   getParentRoute: () => LearnRoute,
 } as any)
 const AdminAiContentRoute = AdminAiContentRouteImport.update({
@@ -197,6 +211,16 @@ const LearnCoursesIdRoute = LearnCoursesIdRouteImport.update({
   path: '/courses/$id',
   getParentRoute: () => LearnRoute,
 } as any)
+const LearnPracticeSessionRoute = LearnPracticeSessionRouteImport.update({
+  id: '/session',
+  path: '/session',
+  getParentRoute: () => LearnPracticeRoute,
+} as any)
+const LearnTestsTestIdRoute = LearnTestsTestIdRouteImport.update({
+  id: '/tests/$testId',
+  path: '/tests/$testId',
+  getParentRoute: () => LearnRoute,
+} as any)
 const LearnCoursesIdLessonsLessonIdRoute =
   LearnCoursesIdLessonsLessonIdRouteImport.update({
     id: '/lessons/$lessonId',
@@ -215,7 +239,9 @@ export interface FileRoutesByFullPath {
   '/admin/results': typeof AdminResultsRoute
   '/admin/search': typeof AdminSearchRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/learn/practice': typeof LearnPracticeRouteWithChildren
   '/learn/search': typeof LearnSearchRoute
+  '/learn/tutor': typeof LearnTutorRoute
   '/admin/': typeof AdminIndexRoute
   '/learn/': typeof LearnIndexRoute
   '/admin/ai/content': typeof AdminAiContentRoute
@@ -229,6 +255,8 @@ export interface FileRoutesByFullPath {
   '/admin/tests/builder': typeof AdminTestsBuilderRoute
   '/admin/tests/preview': typeof AdminTestsPreviewRoute
   '/learn/courses/$id': typeof LearnCoursesIdRouteWithChildren
+  '/learn/practice/session': typeof LearnPracticeSessionRoute
+  '/learn/tests/$testId': typeof LearnTestsTestIdRoute
   '/admin/categories/': typeof AdminCategoriesIndexRoute
   '/admin/courses/': typeof AdminCoursesIndexRoute
   '/admin/lessons/': typeof AdminLessonsIndexRoute
@@ -247,7 +275,9 @@ export interface FileRoutesByTo {
   '/admin/results': typeof AdminResultsRoute
   '/admin/search': typeof AdminSearchRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/learn/practice': typeof LearnPracticeRouteWithChildren
   '/learn/search': typeof LearnSearchRoute
+  '/learn/tutor': typeof LearnTutorRoute
   '/admin': typeof AdminIndexRoute
   '/learn': typeof LearnIndexRoute
   '/admin/ai/content': typeof AdminAiContentRoute
@@ -261,6 +291,8 @@ export interface FileRoutesByTo {
   '/admin/tests/builder': typeof AdminTestsBuilderRoute
   '/admin/tests/preview': typeof AdminTestsPreviewRoute
   '/learn/courses/$id': typeof LearnCoursesIdRouteWithChildren
+  '/learn/practice/session': typeof LearnPracticeSessionRoute
+  '/learn/tests/$testId': typeof LearnTestsTestIdRoute
   '/admin/categories': typeof AdminCategoriesIndexRoute
   '/admin/courses': typeof AdminCoursesIndexRoute
   '/admin/lessons': typeof AdminLessonsIndexRoute
@@ -282,7 +314,9 @@ export interface FileRoutesById {
   '/admin/results': typeof AdminResultsRoute
   '/admin/search': typeof AdminSearchRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/learn/practice': typeof LearnPracticeRouteWithChildren
   '/learn/search': typeof LearnSearchRoute
+  '/learn/tutor': typeof LearnTutorRoute
   '/admin/': typeof AdminIndexRoute
   '/learn/': typeof LearnIndexRoute
   '/admin/ai/content': typeof AdminAiContentRoute
@@ -296,6 +330,8 @@ export interface FileRoutesById {
   '/admin/tests/builder': typeof AdminTestsBuilderRoute
   '/admin/tests/preview': typeof AdminTestsPreviewRoute
   '/learn/courses/$id': typeof LearnCoursesIdRouteWithChildren
+  '/learn/practice/session': typeof LearnPracticeSessionRoute
+  '/learn/tests/$testId': typeof LearnTestsTestIdRoute
   '/admin/categories/': typeof AdminCategoriesIndexRoute
   '/admin/courses/': typeof AdminCoursesIndexRoute
   '/admin/lessons/': typeof AdminLessonsIndexRoute
@@ -318,7 +354,9 @@ export interface FileRouteTypes {
     | '/admin/results'
     | '/admin/search'
     | '/admin/settings'
+    | '/learn/practice'
     | '/learn/search'
+    | '/learn/tutor'
     | '/admin/'
     | '/learn/'
     | '/admin/ai/content'
@@ -332,6 +370,8 @@ export interface FileRouteTypes {
     | '/admin/tests/builder'
     | '/admin/tests/preview'
     | '/learn/courses/$id'
+    | '/learn/practice/session'
+    | '/learn/tests/$testId'
     | '/admin/categories/'
     | '/admin/courses/'
     | '/admin/lessons/'
@@ -350,7 +390,9 @@ export interface FileRouteTypes {
     | '/admin/results'
     | '/admin/search'
     | '/admin/settings'
+    | '/learn/practice'
     | '/learn/search'
+    | '/learn/tutor'
     | '/admin'
     | '/learn'
     | '/admin/ai/content'
@@ -364,6 +406,8 @@ export interface FileRouteTypes {
     | '/admin/tests/builder'
     | '/admin/tests/preview'
     | '/learn/courses/$id'
+    | '/learn/practice/session'
+    | '/learn/tests/$testId'
     | '/admin/categories'
     | '/admin/courses'
     | '/admin/lessons'
@@ -384,7 +428,9 @@ export interface FileRouteTypes {
     | '/admin/results'
     | '/admin/search'
     | '/admin/settings'
+    | '/learn/practice'
     | '/learn/search'
+    | '/learn/tutor'
     | '/admin/'
     | '/learn/'
     | '/admin/ai/content'
@@ -398,6 +444,8 @@ export interface FileRouteTypes {
     | '/admin/tests/builder'
     | '/admin/tests/preview'
     | '/learn/courses/$id'
+    | '/learn/practice/session'
+    | '/learn/tests/$testId'
     | '/admin/categories/'
     | '/admin/courses/'
     | '/admin/lessons/'
@@ -500,11 +548,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LearnIndexRouteImport
       parentRoute: typeof LearnRoute
     }
+    '/learn/practice': {
+      id: '/learn/practice'
+      path: '/practice'
+      fullPath: '/learn/practice'
+      preLoaderRoute: typeof LearnPracticeRouteImport
+      parentRoute: typeof LearnRoute
+    }
     '/learn/search': {
       id: '/learn/search'
       path: '/search'
       fullPath: '/learn/search'
       preLoaderRoute: typeof LearnSearchRouteImport
+      parentRoute: typeof LearnRoute
+    }
+    '/learn/tutor': {
+      id: '/learn/tutor'
+      path: '/tutor'
+      fullPath: '/learn/tutor'
+      preLoaderRoute: typeof LearnTutorRouteImport
       parentRoute: typeof LearnRoute
     }
     '/admin/ai/content': {
@@ -633,6 +695,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LearnCoursesIdRouteImport
       parentRoute: typeof LearnRoute
     }
+    '/learn/practice/session': {
+      id: '/learn/practice/session'
+      path: '/session'
+      fullPath: '/learn/practice/session'
+      preLoaderRoute: typeof LearnPracticeSessionRouteImport
+      parentRoute: typeof LearnPracticeRoute
+    }
+    '/learn/tests/$testId': {
+      id: '/learn/tests/$testId'
+      path: '/tests/$testId'
+      fullPath: '/learn/tests/$testId'
+      preLoaderRoute: typeof LearnTestsTestIdRouteImport
+      parentRoute: typeof LearnRoute
+    }
     '/learn/courses/$id/lessons/$lessonId': {
       id: '/learn/courses/$id/lessons/$lessonId'
       path: '/lessons/$lessonId'
@@ -699,6 +775,18 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface LearnPracticeRouteChildren {
+  LearnPracticeSessionRoute: typeof LearnPracticeSessionRoute
+}
+
+const LearnPracticeRouteChildren: LearnPracticeRouteChildren = {
+  LearnPracticeSessionRoute: LearnPracticeSessionRoute,
+}
+
+const LearnPracticeRouteWithChildren = LearnPracticeRoute._addFileChildren(
+  LearnPracticeRouteChildren,
+)
+
 interface LearnCoursesIdRouteChildren {
   LearnCoursesIdLessonsLessonIdRoute: typeof LearnCoursesIdLessonsLessonIdRoute
 }
@@ -712,16 +800,22 @@ const LearnCoursesIdRouteWithChildren = LearnCoursesIdRoute._addFileChildren(
 )
 
 interface LearnRouteChildren {
+  LearnPracticeRoute: typeof LearnPracticeRouteWithChildren
   LearnSearchRoute: typeof LearnSearchRoute
+  LearnTutorRoute: typeof LearnTutorRoute
   LearnIndexRoute: typeof LearnIndexRoute
   LearnCoursesIdRoute: typeof LearnCoursesIdRouteWithChildren
+  LearnTestsTestIdRoute: typeof LearnTestsTestIdRoute
   LearnCoursesIndexRoute: typeof LearnCoursesIndexRoute
 }
 
 const LearnRouteChildren: LearnRouteChildren = {
+  LearnPracticeRoute: LearnPracticeRouteWithChildren,
   LearnSearchRoute: LearnSearchRoute,
+  LearnTutorRoute: LearnTutorRoute,
   LearnIndexRoute: LearnIndexRoute,
   LearnCoursesIdRoute: LearnCoursesIdRouteWithChildren,
+  LearnTestsTestIdRoute: LearnTestsTestIdRoute,
   LearnCoursesIndexRoute: LearnCoursesIndexRoute,
 }
 
