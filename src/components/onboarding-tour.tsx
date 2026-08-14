@@ -144,7 +144,10 @@ export function OnboardingTour() {
 
   return (
     <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Product tour">
-      <div className="absolute inset-0 bg-foreground/55 backdrop-blur-[2px]" onClick={finish} />
+      <div
+        className={cn("absolute inset-0", rect ? "" : "bg-foreground/55 backdrop-blur-[2px]")}
+        onClick={finish}
+      />
 
       {rect ? (
         <div
@@ -154,11 +157,8 @@ export function OnboardingTour() {
             left: rect.left,
             width: rect.width,
             height: rect.height,
-            boxShadow: "0 0 0 9999px var(--color-foreground)",
-            opacity: 0.999,
-            // keep the hole readable: overlay above is what dims, this cuts it out
-            background: "transparent",
-            mixBlendMode: "normal",
+            boxShadow:
+              "0 0 0 9999px color-mix(in oklch, var(--color-foreground) 55%, transparent)",
           }}
         />
       ) : null}
