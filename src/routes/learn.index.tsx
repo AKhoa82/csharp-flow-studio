@@ -69,6 +69,7 @@ function StudentDashboard() {
 
   return (
     <div className="space-y-6">
+      <OnboardingTour />
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-sm text-muted-foreground">{today}</p>
@@ -76,10 +77,21 @@ function StudentDashboard() {
             Welcome back, Tan
           </h1>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-warning/25 bg-warning-soft px-3 py-1.5 text-xs font-semibold text-warning-foreground">
-          <Flame className="h-3.5 w-3.5" /> 12-day streak — keep it alive today
-        </span>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-muted-foreground"
+            onClick={restartOnboardingTour}
+          >
+            <Compass className="h-3.5 w-3.5" /> Replay tour
+          </Button>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-warning/25 bg-warning-soft px-3 py-1.5 text-xs font-semibold text-warning-foreground">
+            <Flame className="h-3.5 w-3.5" /> 12-day streak — keep it alive today
+          </span>
+        </div>
       </div>
+
 
       <div data-tour="progress" className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <StatCard label="Day streak" value="12" delta="Best so far: 21 days" icon={Flame} tone="warning" />
