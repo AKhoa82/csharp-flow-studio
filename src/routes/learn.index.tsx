@@ -90,7 +90,7 @@ function StudentDashboard() {
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
           {featured ? (
-            <section className="surface overflow-hidden">
+            <section data-tour="continue" className="surface overflow-hidden">
               <div className="grid md:grid-cols-[minmax(0,1fr)_220px]">
                 <div className="p-6 sm:p-7">
                   <p className="text-xs font-semibold uppercase tracking-wider text-primary">
