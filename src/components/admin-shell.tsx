@@ -28,6 +28,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 type NavItem = { label: string; to: string; icon: typeof Gauge; badge?: string };
 
@@ -216,6 +217,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
             <Button asChild variant="ghost" size="sm" className="hidden text-muted-foreground md:inline-flex">
               <Link to="/learn">Student view</Link>
             </Button>
+            <ThemeToggle />
             <Button asChild variant="ghost" size="icon" className="relative">
               <Link to="/admin/notifications">
                 <Bell className="h-4.5 w-4.5" />

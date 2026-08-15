@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { label: "Dashboard", to: "/learn", icon: LayoutGrid, tour: undefined },
@@ -70,6 +71,7 @@ export function StudentShell({ children }: { children: ReactNode }) {
             <Button asChild variant="ghost" size="sm" className="hidden text-muted-foreground lg:inline-flex">
               <Link to="/admin">Manager view</Link>
             </Button>
+            <ThemeToggle />
             <Button variant="ghost" size="icon">
               <Bell className="h-4.5 w-4.5" />
             </Button>
