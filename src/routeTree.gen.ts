@@ -21,6 +21,7 @@ import { Route as AdminResultsRouteImport } from './routes/admin.results'
 import { Route as AdminSearchRouteImport } from './routes/admin.search'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
+import { Route as LearnAnalyticsRouteImport } from './routes/learn.analytics'
 import { Route as LearnPracticeRouteImport } from './routes/learn.practice'
 import { Route as LearnSearchRouteImport } from './routes/learn.search'
 import { Route as LearnTutorRouteImport } from './routes/learn.tutor'
@@ -104,6 +105,11 @@ const AdminSettingsRoute = AdminSettingsRouteImport.update({
 const LearnIndexRoute = LearnIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => LearnRoute,
+} as any)
+const LearnAnalyticsRoute = LearnAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
   getParentRoute: () => LearnRoute,
 } as any)
 const LearnPracticeRoute = LearnPracticeRouteImport.update({
@@ -239,6 +245,7 @@ export interface FileRoutesByFullPath {
   '/admin/results': typeof AdminResultsRoute
   '/admin/search': typeof AdminSearchRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/learn/analytics': typeof LearnAnalyticsRoute
   '/learn/practice': typeof LearnPracticeRouteWithChildren
   '/learn/search': typeof LearnSearchRoute
   '/learn/tutor': typeof LearnTutorRoute
@@ -275,6 +282,7 @@ export interface FileRoutesByTo {
   '/admin/results': typeof AdminResultsRoute
   '/admin/search': typeof AdminSearchRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/learn/analytics': typeof LearnAnalyticsRoute
   '/learn/practice': typeof LearnPracticeRouteWithChildren
   '/learn/search': typeof LearnSearchRoute
   '/learn/tutor': typeof LearnTutorRoute
@@ -314,6 +322,7 @@ export interface FileRoutesById {
   '/admin/results': typeof AdminResultsRoute
   '/admin/search': typeof AdminSearchRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/learn/analytics': typeof LearnAnalyticsRoute
   '/learn/practice': typeof LearnPracticeRouteWithChildren
   '/learn/search': typeof LearnSearchRoute
   '/learn/tutor': typeof LearnTutorRoute
@@ -354,6 +363,7 @@ export interface FileRouteTypes {
     | '/admin/results'
     | '/admin/search'
     | '/admin/settings'
+    | '/learn/analytics'
     | '/learn/practice'
     | '/learn/search'
     | '/learn/tutor'
@@ -390,6 +400,7 @@ export interface FileRouteTypes {
     | '/admin/results'
     | '/admin/search'
     | '/admin/settings'
+    | '/learn/analytics'
     | '/learn/practice'
     | '/learn/search'
     | '/learn/tutor'
@@ -428,6 +439,7 @@ export interface FileRouteTypes {
     | '/admin/results'
     | '/admin/search'
     | '/admin/settings'
+    | '/learn/analytics'
     | '/learn/practice'
     | '/learn/search'
     | '/learn/tutor'
@@ -546,6 +558,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/learn/'
       preLoaderRoute: typeof LearnIndexRouteImport
+      parentRoute: typeof LearnRoute
+    }
+    '/learn/analytics': {
+      id: '/learn/analytics'
+      path: '/analytics'
+      fullPath: '/learn/analytics'
+      preLoaderRoute: typeof LearnAnalyticsRouteImport
       parentRoute: typeof LearnRoute
     }
     '/learn/practice': {
@@ -800,6 +819,7 @@ const LearnCoursesIdRouteWithChildren = LearnCoursesIdRoute._addFileChildren(
 )
 
 interface LearnRouteChildren {
+  LearnAnalyticsRoute: typeof LearnAnalyticsRoute
   LearnPracticeRoute: typeof LearnPracticeRouteWithChildren
   LearnSearchRoute: typeof LearnSearchRoute
   LearnTutorRoute: typeof LearnTutorRoute
@@ -810,6 +830,7 @@ interface LearnRouteChildren {
 }
 
 const LearnRouteChildren: LearnRouteChildren = {
+  LearnAnalyticsRoute: LearnAnalyticsRoute,
   LearnPracticeRoute: LearnPracticeRouteWithChildren,
   LearnSearchRoute: LearnSearchRoute,
   LearnTutorRoute: LearnTutorRoute,

@@ -63,7 +63,7 @@ const weekly = {
     { label: "Aug 3", minutes: 241, accuracy: 76, questions: 143 },
     { label: "Aug 10", minutes: 262, accuracy: 79, questions: 156 },
   ],
-} as const;
+};
 
 const perDay = [
   { day: "Mon", minutes: 42, accuracy: 74 },
