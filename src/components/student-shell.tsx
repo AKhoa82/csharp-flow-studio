@@ -20,6 +20,7 @@ const links = [
   { label: "Dashboard", to: "/learn", icon: LayoutGrid, tour: undefined },
   { label: "Browse courses", to: "/learn/courses", icon: Compass, tour: "courses" },
   { label: "Practice", to: "/learn/practice", icon: Target, tour: "practice" },
+  { label: "Analytics", to: "/learn/analytics", icon: BarChart3, tour: undefined },
   { label: "AI Tutor", to: "/learn/tutor", icon: Bot, tour: undefined },
   { label: "Search", to: "/learn/search", icon: Search, tour: undefined },
 ];
