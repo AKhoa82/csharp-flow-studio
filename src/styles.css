@@ -195,8 +195,8 @@
 }
 
 @utility code-surface {
-  background: oklch(0.21 0.03 40);
-  color: oklch(0.94 0.012 70);
+  background: oklch(0.22 0.02 40);
+  color: oklch(0.94 0.01 70);
   font-family: var(--font-mono);
   border-radius: var(--radius-lg);
 }
