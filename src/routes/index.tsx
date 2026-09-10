@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CodeBlock } from "@/components/primitives";
+import { SiteFooter } from "@/components/site-footer";
 import { sampleCode } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/")({
@@ -28,7 +29,8 @@ export const Route = createFileRoute("/")({
 
 function Login() {
   return (
-    <div className="grid min-h-screen lg:grid-cols-2">
+    <div className="flex min-h-screen flex-col">
+    <div className="grid flex-1 lg:grid-cols-2">
       <div className="flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm">
           <div className="flex items-center gap-2.5">
@@ -120,6 +122,8 @@ function Login() {
           </div>
         </div>
       </div>
+    </div>
+    <SiteFooter variant="landing" />
     </div>
   );
 }
