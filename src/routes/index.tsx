@@ -121,6 +121,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <SiteFooter variant="landing" />
     </div>
   );
 }
